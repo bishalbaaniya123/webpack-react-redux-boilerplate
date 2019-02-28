@@ -12,10 +12,15 @@ class TestComponent extends React.Component {
     this.props.testAction('Hello');
   }
 
+  goToLogin = () => {
+    this.props.history.push({pathname: "/login"})
+  };
+
   render() {
     return (
       <div>
         <h1>This is a test component</h1>
+        <button onClick={this.goToLogin}>Go to login</button>
       </div>
     );
   }
