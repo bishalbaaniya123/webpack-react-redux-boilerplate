@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import { persistor, store } from './redux-stuffs/store/store';
-
+import { Route, Switch } from 'react-router-dom';
 import TestComponent from './Pages/Test';
+import Login from './Pages/Login';
+import NotFoundComponent from './Pages/NotFound';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor() {
+    super();
   }
 
   render() {
     return (
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
-            <Switch>
-              <Route path="/" component={TestComponent} />
-            </Switch>
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <Route path="/test" component={TestComponent}/>
+        <Route path="/" exact component={TestComponent}/>
+        <Route component={NotFoundComponent}/>
+      </Switch>
     );
   }
 }
 
 export default hot(module)(App);
+// export default hot(module)(App);
