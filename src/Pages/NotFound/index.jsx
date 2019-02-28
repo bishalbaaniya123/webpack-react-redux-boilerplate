@@ -8,10 +8,6 @@ class TestComponent extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.testAction('Hello');
-  }
-
   render() {
     return (
       <div>
@@ -29,7 +25,6 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 const mapStateToProps = state => {
-  console.log('this is state from mapStateToProps', state);
   return {};
 };
 
